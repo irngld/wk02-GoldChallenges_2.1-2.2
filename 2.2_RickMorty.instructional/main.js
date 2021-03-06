@@ -18,3 +18,31 @@
 */
 
 //NOTE: Write your code below and push back to your github branch.  SUBMIT YOUR GITHUB URL IN CANVAS
+
+const URL = 'https://rickandmortyapi.com/api/character';
+
+function displayPics(objRickMorty){
+    
+    let imageOne = document.getElementById('imageOne')
+    let imageTwo = document.getElementById('imageTwo')
+    
+    // declare 2 variables and set the "src" (two birds, one stone)
+    imageOne.src = objRickMorty.results[0].image;
+    imageTwo.src = objRickMorty.results[1].image;
+    
+    // style based on criteria
+    imageOne.classList.add("pictures");
+    imageTwo.classList.add("pictures");
+}
+
+function fetchRickMorty(){
+    fetch(URL)
+    .then( result => result.json() )
+    .then( json => {
+        console.log(json);
+        displayPics(json);
+    })
+}
+
+
+fetchRickMorty();
